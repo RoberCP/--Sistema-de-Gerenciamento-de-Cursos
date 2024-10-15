@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+
+<h1>Lista de Produtos</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Imagem</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td colspan="5">
+            <div id="produtosContainer">
+                <!-- Aqui, você irá usar JavaScript ou uma biblioteca JSF para preencher a lista de produtos -->
+                <!-- Exemplo de preenchimento de produto -->
+                <script>
+                    const produtos = #{produtoBean.listarProdutos()};
+                    produtos.forEach(produto => {
+                        document.write('<tr>');
+                        document.write('<td>' + produto.nome + '</td>');
+                        document.write('<td>' + produto.descricao + '</td>');
+                        document.write('<td>' + produto.preco + '</td>');
+                        document.write('<td><img src="' + produto.imagem + '" alt="Imagem do Produto" style="width: 100px;"/></td>');
+                        document.write('<td><button onclick="adicionarAoCarrinho(' + produto.id + ')">Adicionar ao Carrinho</button></td>');
+                        document.write('</tr>');
+                    });
+                </script>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Login</h2>
+<form action="login" method="POST">
+    <input type="email" name="email" placeholder="E-mail" required />
+    <input type="password" name="senha" placeholder="Senha" required />
+    <button type="submit">Login</button>
+</form>
+
+<h2>Cadastro</h2>
+<form action="cadastrar" method="POST">
+    <input type="text" name="nome" placeholder="Nome" required />
+    <input type="email" name="email" placeholder="E-mail" required />
+    <input type="password" name="senha" placeholder="Senha" required />
+    <button type="submit">Cadastrar</button>
+</form>
+
+<script>
+    function adicionarAoCarrinho(idProduto) {
+        fetch('adicionarProdutoAoCarrinho?id=' + idProduto, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert('Produto adicionado ao carrinho!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+</body>
+</html>

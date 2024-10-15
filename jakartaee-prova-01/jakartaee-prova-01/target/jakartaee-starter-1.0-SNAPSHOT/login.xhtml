@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+</h:head>
+
+<h:body>
+    <div class="col-6">
+        <h:messages/>
+        <h:form id="form">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="username" value="Usuario"/>
+                <h:inputText id="username" value="#{loginPage.username}"/>
+
+                <h:outputLabel for="password" value="Senha"/>
+                <h:inputSecret id="password" value="#{loginPage.password}"/>
+
+                <h:commandButton value="Login" type="submit" action="#{loginPage.login}" ajax="false"/>
+
+            </h:panelGrid>
+        </h:form>
+    </div>
+</h:body>
+</html>

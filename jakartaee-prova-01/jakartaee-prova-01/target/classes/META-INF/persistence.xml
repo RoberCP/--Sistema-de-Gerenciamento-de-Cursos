@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+        xmlns="https://jakarta.ee/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                 https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+        version="3.0">
+
+    <persistence-unit name="jakartaee-starter">
+        <jta-data-source>java:global/datasources/jakartaeeStarter</jta-data-source>
+
+        <properties>
+            <!-- Ação de geração de esquema (criação automática das tabelas) -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:~/test"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/db/init.sql"/>
+
+            <!-- Configurações para Glassfish/Payara/EclipseLink -->
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+
+            <!-- Configurações para WildFly/Hibernate -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
