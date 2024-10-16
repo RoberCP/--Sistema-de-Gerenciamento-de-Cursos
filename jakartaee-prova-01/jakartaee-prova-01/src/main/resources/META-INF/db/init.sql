@@ -3,3 +3,17 @@ INSERT INTO produto (nome, descricao, preco, categoria, estoque) VALUES ('Celula
 INSERT INTO produto (nome, descricao, preco, categoria, estoque) VALUES ('Celular', 'Xiaomi 13C 256GB', 19.99, 'Categoria 1', 200);
 INSERT INTO produto (nome, descricao, preco, categoria, estoque) VALUES ('Teclado', 'Teclado ergonomico', 99.99, 'Categoria 3', 20);
 INSERT INTO produto (nome, descricao, preco, categoria, estoque) VALUES ('Fone de ouvido', 'Fone de ouvido Bluetooth', 15.99, 'Categoria 2', 150);
+
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+INSERT INTO aluno (nome, cpf, dataNascimento, telefone, matricula) values ();
+
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
+INSERT INTO professor (nome, cpf, dataNascimento, telefone, especialidade) values ();
