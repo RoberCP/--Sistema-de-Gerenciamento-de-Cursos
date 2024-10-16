@@ -2,6 +2,7 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,8 +76,9 @@ public class Curso {
         return alunos;
     }
 
-    public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
+    public void setAlunos(Aluno aluno) {
+        this.alunos = this.alunos == null ? new ArrayList<Aluno>() : this.alunos;
+        this.alunos.add(aluno);
     }
 
     public void setId(Long id) {
