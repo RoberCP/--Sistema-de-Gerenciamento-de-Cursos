@@ -1,5 +1,6 @@
 package repositories;
 
+import entities.Aluno;
 import entities.Curso;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -7,7 +8,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
 @Stateless
@@ -48,6 +48,16 @@ public class CursoRepository {
 
         if (curso != null) {
             em.remove(curso);
+        }
+    }
+
+    public void subscribe(Long alunoId, Long cursoId) {
+        Aluno aluno = em.find(Aluno.class, alunoId);
+        Curso curso = em.find(Curso.class, cursoId);
+
+        if (aluno != null && curso != null) {
+            curso.setAlunos(aluno);
+            em.merge(curso);
         }
     }
 }
