@@ -34,4 +34,8 @@ public class CursoService {
     public void deleteCurso(Long id) {
         repository.deleteCurso(id);
     }
+
+    public void subscribe(Long alunoId, Long cursoId) {
+        repository.subscribe(alunoId, cursoId);
+    }
 }

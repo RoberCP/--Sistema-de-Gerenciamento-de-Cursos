@@ -1,109 +1,42 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="jakarta.faces.facelets"
-                xmlns:h="jakarta.faces.html"
-                xmlns:f="jakarta.faces.core">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+   <title>Gerenciamento de cursos</title>
 
-   <h:head>
-      <meta charset="UTF-8" />
-      <title>Login</title>
-      <style>
-         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-         }
+   <meta charset="utf-8"></meta>
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
 
-         .card {
-            max-width: 400px;
-            width: 100%;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            text-align: center;
-         }
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+         crossorigin="anonymous"/>
 
-         h2 {
-            color: #007bff;
-            font-weight: 300;
-            margin-bottom: 20px;
-         }
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+         crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-         }
+   <link href="#{request.contextPath}/resources/css/main.css" rel="stylesheet"/>
+</h:head>
 
-         .form-group h\:outputLabel {
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
-         }
+<h:body>
+   <div class="col-6">
+      <h5>Hotelaria - Login</h5>
+      <h:messages/>
+      <h:form id="form">
+         <p:panelGrid columns="2" styleClass="ui-grid-row">
+            <h:outputLabel for="username" value="Usuário"/>
+            <h:inputText id="username" value="#{loginPage.username}"/>
 
-         .form-group h\:inputText,
-         .form-group h\:inputSecret {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-top: 5px;
-            box-sizing: border-box;
-         }
+            <h:outputLabel for="password" value="Senha"/>
+            <h:inputSecret id="password" value="#{loginPage.password}"/>
 
-         .form-group h\:inputText:focus,
-         .form-group h\:inputSecret:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-         }
-
-         .error-messages {
-            color: #dc3545;
-            margin-bottom: 20px;
-         }
-
-         h\:commandButton {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            margin-top: 10px;
-         }
-
-         h\:commandButton:hover {
-            background-color: #0056b3;
-         }
-
-      </style>
-   </h:head>
-
-   <h:body>
-      <div class="card">
-         <h2>Login</h2>
-         <h:form id="loginForm">
-            <h:messages globalOnly="true" layout="block" styleClass="error-messages" />
-            <div class="form-group">
-               <h:outputLabel for="email" value="E-mail:" />
-               <h:inputText id="email" value="#{produtoView.email}" required="true" />
-            </div>
-            <div class="form-group">
-               <h:outputLabel for="senha" value="Senha:" />
-               <h:inputSecret id="senha" value="#{produtoView.senha}" required="true" />
-            </div>
-            <h:commandButton value="Entrar" action="#{produtoView.login()}" />
-         </h:form>
-      </div>
-   </h:body>
-</ui:composition>
+            <p:commandButton value="Login" type="submit" action="#{loginPage.login}" ajax="false"/>
+         </p:panelGrid>
+      </h:form>
+   </div>
+</h:body>
+</html>
