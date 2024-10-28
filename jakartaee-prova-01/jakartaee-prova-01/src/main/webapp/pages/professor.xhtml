@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Gerenciar Professores</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:dataTable var="professor" value="#{professorView.allProfessores}">
+            <p:column headerText="ID">
+                <h:outputText value="#{professor.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{professor.nome}" />
+            </p:column>
+            <p:column headerText="Especialidade">
+                <h:outputText value="#{professor.especialidade}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton value="Excluir" action="#{professorView.deleteProfessor(professor)}" update="@form" />
+            </p:column>
+        </p:dataTable>
+
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Nome:" for="professorNome" />
+            <h:inputText id="professorNome" value="#{professorView.professor.nome}" required="true" />
+
+            <h:outputLabel value="Especialidade:" for="professorEspecialidade" />
+            <h:inputText id="professorEspecialidade" value="#{professorView.professor.especialidade}" required="true" />
+
+            <p:commandButton value="Salvar" action="#{professorView.createProfessor(professorView.professor)}" update="@form" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

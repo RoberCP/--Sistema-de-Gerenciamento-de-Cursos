@@ -33,7 +33,7 @@ public class SecurityDataSetup {
         passwordHash.initialize(applicationConfig.getHashAlgorithmParameterMap());
 
         executeUpdate(dataSource, "DROP TABLE IF EXISTS usuario");
-        executeUpdate(dataSource, "DROP TABLE IF EXISTS usurio_grupo");
+        executeUpdate(dataSource, "DROP TABLE IF EXISTS usuario_grupo");
 
         executeUpdate(dataSource, "CREATE TABLE IF NOT EXISTS usuario(nome VARCHAR(64) PRIMARY KEY, senha VARCHAR(255))");
         executeUpdate(dataSource, "CREATE TABLE IF NOT EXISTS usuario_grupo(usuario_nome VARCHAR(64), grupo_nome VARCHAR(64))");

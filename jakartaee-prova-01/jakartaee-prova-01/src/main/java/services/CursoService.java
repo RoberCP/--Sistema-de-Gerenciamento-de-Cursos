@@ -1,41 +1,70 @@
 package services;
 
 import entities.Curso;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import repositories.CursoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class CursoService {
 
-    @Inject
-    CursoRepository repository;
+        private List<Curso> cursos = new ArrayList<>();
 
-    public Curso getCursoById(Long id) {
-        return repository.getCursoById(id);
+        public CursoService() {
+        }
+
+        //Salvar curso
+        public void saveCurso(Curso curso) {
+        cursos.add(curso); // Aqui você deve implementar a lógica de persistência no banco de dados
     }
 
-    public Curso getCursoByName(String name) {
-        return repository.getCursoByName(name);
-    }
+        //Buscar curso pelo ID
+        public Curso getCursoById(Long id) {
+            return cursos.stream()
+                    .filter(curso -> curso.getId().equals(id))
+                    .findFirst()
+                    .orElse(null);
+        }
 
-    public List<Curso> getAllCursos() {
-        return repository.getAllCursos();
-    }
+        //Buscar curso pelo nome
+        public Curso getCursoByName(String name) {
+            return cursos.stream()
+                    .filter(curso -> curso.getNome().equalsIgnoreCase(name))
+                    .findFirst()
+                    .orElse(null);
+        }
 
-    public void createCurso(Curso curso) {
-        repository.createCurso(curso);
-    }
+        //Lista todos os cursos
+        public List<Curso> getAllCursos() {
+            return cursos;
+        }
 
-    public void updateCurso(Curso curso) {
-        repository.updateCurso(curso);
-    }
+        //Adiciona um novo curso
+        public void createCurso(Curso curso) {
+            cursos.add(curso);
+        }
 
-    public void deleteCurso(Long id) {
-        repository.deleteCurso(id);
-    }
+        //Atualiza um curso existente
+        public void updateCurso(Curso curso) {
+            for (int i = 0; i < cursos.size(); i++) {
+                if (cursos.get(i).getId().equals(curso.getId())) {
+                    cursos.set(i, curso);
+                    return;
+                }
+            }
+        }
 
-    public void subscribe(Long alunoId, Long cursoId) {
-        repository.subscribe(alunoId, cursoId);
+        //Deleta um curso
+        public void deleteCurso(Long id) {
+            cursos.removeIf(curso -> curso.getId().equals(id));
+        }
+
+        //Inscreve um aluno em um curso
+        public void subscribe(Long alunoId, Long cursoId) {
+        }
     }
-}

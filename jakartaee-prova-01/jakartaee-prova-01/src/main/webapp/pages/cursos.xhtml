@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Gerenciamento de Cursos</title>
+    <h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+
+<h:body>
+    <h:form id="cursoForm">
+        <h1>Gerenciamento de Cursos</h1>
+
+        <!-- Formulário de Cadastro de Curso -->
+        <p:panel header="Cadastrar Novo Curso" style="margin-bottom: 20px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="nome" value="Nome do Curso:" />
+                <p:inputText id="nome" value="#{cursoBean.curso.nome}" required="true" />
+
+                <h:outputLabel for="descricao" value="Descrição:" />
+                <p:inputTextarea id="descricao" value="#{cursoBean.curso.descricao}" rows="4" cols="30" required="true" />
+
+                <h:outputLabel for="professor" value="Professor:" />
+                <p:inputText id="professor" value="#{cursoBean.curso.professor}" required="true" />
+            </h:panelGrid>
+
+            <p:commandButton value="Salvar Curso" action="#{cursoBean.salvarCurso}" update=":cursoForm:tabelaCursos" />
+        </p:panel>
+
+        <!-- Tabela para Exibir Cursos Cadastrados -->
+        <p:dataTable id="tabelaCursos" value="#{cursoBean.listaCursos}" var="curso" style="width: 100%;">
+            <p:column headerText="Nome">
+                <h:outputText value="#{curso.nome}" />
+            </p:column>
+            <p:column headerText="Descrição">
+                <h:outputText value="#{curso.descricao}" />
+            </p:column>
+            <p:column headerText="Professor">
+                <h:outputText value="#{curso.professor}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton icon="pi pi-pencil" title="Editar" action="#{cursoBean.editarCurso(curso)}" update=":cursoForm"/>
+                <p:commandButton icon="pi pi-trash" title="Remover" action="#{cursoBean.removerCurso(curso)}" update=":cursoForm:tabelaCursos" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>
