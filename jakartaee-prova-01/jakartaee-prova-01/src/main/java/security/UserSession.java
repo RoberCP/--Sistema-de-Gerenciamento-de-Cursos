@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 public class UserSession implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Inject
-    Logger LOGGER;
+
+    private static final Logger LOGGER = Logger.getLogger(UserSession.class.getName());
 
     @Inject
     private SecurityContext securityContext;
