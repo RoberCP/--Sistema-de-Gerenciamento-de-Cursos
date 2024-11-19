@@ -23,7 +23,7 @@ import java.util.Map;
 )
 @CustomFormAuthenticationMechanismDefinition(
         loginToContinue = @LoginToContinue(
-                loginPage="/pages/login.xhtml",
+                loginPage="/login.xhtml",
                 errorPage=""
         )
 )

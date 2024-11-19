@@ -16,7 +16,7 @@ import static jakarta.faces.application.FacesMessage.SEVERITY_ERROR;
 import static jakarta.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 
 
-@Named
+@Named("loginPage")
 @RequestScoped
 public class LoginPage {
 
@@ -31,8 +31,6 @@ public class LoginPage {
 
     public void login() {
         switch (
-            // Continue the authentication dialog manually by invoking the authenticate()
-            // method. The form authentication picks this up, just like a post to j_security does.
                 securityContext.authenticate(
                         getRequest(),
                         getResponse(),
@@ -47,9 +45,6 @@ public class LoginPage {
                 return;
 
             case SEND_CONTINUE:
-
-                // Authentication mechanism has send a redirect, should not
-                // send anything to response from Face now.
                 facesContext.responseComplete();
                 return;
 
