@@ -16,7 +16,7 @@ import static jakarta.faces.application.FacesMessage.SEVERITY_ERROR;
 import static jakarta.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 
 
-@Named("loginPage")
+@Named
 @RequestScoped
 public class LoginPage {
 
